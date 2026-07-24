@@ -18,13 +18,19 @@ A versão `alternativas/consultor/index.html` prioriza a apresentação do consu
 
 ## Executar localmente
 
-Não há dependências nem etapa de build.
+Não há dependências de frontend nem etapa de build.
 
 ```bash
 python3 -m http.server 8000
 ```
 
 Acesse `http://localhost:8000`.
+
+## Publicação no Railway
+
+O projeto inclui `Dockerfile`, `nginx.conf` e `railway.json`. O Railway constrói uma imagem Nginx, injeta a porta pela variável `PORT` e verifica a rota `/health` antes de liberar cada implantação.
+
+Novos commits enviados para a branch conectada ao Railway podem ser publicados automaticamente.
 
 ## Estrutura
 
