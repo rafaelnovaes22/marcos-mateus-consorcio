@@ -4,17 +4,17 @@ Protótipo aprovado para retomada e futura publicação da página do consultor 
 
 ## Versão principal
 
-A página principal (`index.html`) começa pelo objetivo do visitante e conduz à identificação do perfil:
+A página principal (`index.html`) apresenta o consultor, explica o propósito do serviço e detalha três perfis ilustrativos de planejamento:
 
-- comprar um imóvel;
-- trocar de veículo;
-- planejar patrimônio.
+- planejar sem pressa;
+- comprar com estratégia;
+- investir no futuro.
 
-Ela comunica como a recomendação funciona e apresenta o consultor sem prometer contemplação.
+Ela posiciona Marcos Mateus como consultor autorizado Ademicon, destaca que não há promessa de contemplação e direciona o visitante ao perfil mais adequado.
 
-## Alternativa preservada
+## Versão de diagnóstico preservada
 
-A versão `alternativas/consultor/index.html` prioriza a apresentação do consultor e detalha três perfis ilustrativos de planejamento.
+O histórico do Git mantém a proposta anterior baseada nos objetivos “comprar imóvel”, “trocar de veículo” e “planejar patrimônio”.
 
 ## Executar localmente
 
