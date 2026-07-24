@@ -12,6 +12,8 @@ A página principal (`index.html`) apresenta o consultor, explica o propósito d
 
 Ela posiciona Marcos Mateus como consultor autorizado Ademicon, destaca que não há promessa de contemplação e direciona o visitante ao perfil mais adequado.
 
+Os CTAs abrem o WhatsApp comercial `+55 11 92224-7346` com mensagens pré-preenchidas específicas para o contato geral e para cada perfil.
+
 ## Versão de diagnóstico preservada
 
 O histórico do Git mantém a proposta anterior baseada nos objetivos “comprar imóvel”, “trocar de veículo” e “planejar patrimônio”.
