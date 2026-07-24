@@ -35,7 +35,8 @@ Novos commits enviados para a branch conectada ao Railway podem ser publicados a
 ## Estrutura
 
 - `index.html`: versão principal aprovada;
-- `assets/`: imagens locais usadas pelas páginas;
+- `assets/`: imagens locais usadas pelas páginas; a fotografia `marcos-mateus.jpg` é o arquivo original, exibido integralmente, sem filtros ou retoque;
+- `assets/SHA256SUMS`: checksum da fotografia original para impedir substituições ou alterações acidentais;
 - `alternativas/consultor/`: segunda direção visual;
 - `previews/`: capturas desktop e mobile para referência.
 
