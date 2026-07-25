@@ -1,18 +1,18 @@
-# Marcos Mateus — Diagnóstico de Consórcio
+# Marcos Mateus — Consórcio Ademicon
 
-Protótipo aprovado para retomada e futura publicação da página do consultor Marcos Mateus, autorizado Ademicon.
+Landing page comercial do consultor Marcos Mateus, autorizado Ademicon, com cartas de consórcio, conteúdo explicativo e atendimento pelo WhatsApp.
 
-## Versão principal
+## Página principal
 
-A página principal (`index.html`) apresenta o consultor, explica o propósito do serviço e detalha três perfis ilustrativos de planejamento:
+A página principal (`index.html`) apresenta o consultor, explica o funcionamento do consórcio e organiza cartas para três objetivos:
 
-- planejar sem pressa;
-- comprar com estratégia;
-- investir no futuro.
+- veículos;
+- imóveis;
+- investimento.
 
-Ela posiciona Marcos Mateus como consultor autorizado Ademicon, destaca que não há promessa de contemplação e direciona o visitante ao perfil mais adequado.
+Ela posiciona Marcos Mateus como consultor autorizado Ademicon, apresenta condições documentadas e deixa explícito que não há promessa de contemplação ou rentabilidade.
 
-Os CTAs abrem o WhatsApp comercial `+55 11 92224-7346` com mensagens pré-preenchidas específicas para o contato geral e para cada perfil.
+Os CTAs abrem o WhatsApp comercial `+55 11 92224-7346` com mensagens pré-preenchidas e identificação da seção de origem.
 
 ## Versão de diagnóstico preservada
 
@@ -36,18 +36,18 @@ Novos commits enviados para a branch conectada ao Railway podem ser publicados a
 
 ## Estrutura
 
-- `index.html`: versão principal aprovada;
-- `assets/`: imagens locais usadas pelas páginas; a fotografia `marcos-mateus.jpg` é o arquivo original, exibido integralmente, sem filtros ou retoque;
-- `assets/SHA256SUMS`: checksum da fotografia original para impedir substituições ou alterações acidentais;
+- `index.html`: estrutura e conteúdo da landing page;
+- `styles.css`: direção visual responsiva e componentes;
+- `script.js`: menu móvel, filtros, carrossel e animações progressivas;
+- `assets/`: imagens e fonte locais; as fotografias do Marcos são os arquivos originais fornecidos, sem filtros ou retoques;
+- `assets/SHA256SUMS`: checksums das fotografias originais para impedir substituições ou alterações acidentais;
 - `alternativas/consultor/`: segunda direção visual;
 - `previews/`: capturas desktop e mobile para referência.
 
-## Antes da produção
+## Operação
 
-- substituir links e CTAs pelo WhatsApp/formulário real;
-- validar textos, perfis e condições comerciais com a Ademicon;
+- validar periodicamente cartas, parcelas e condições comerciais com a Ademicon;
 - adicionar políticas de privacidade e tratamento LGPD;
-- configurar domínio, métricas e hospedagem;
-- otimizar imagens e aplicar SEO técnico.
+- configurar domínio próprio e métricas de conversão.
 
 > Os perfis e características exibidos neste protótipo são ilustrativos. A contemplação ocorre por sorteio ou lance, de acordo com as regras do grupo.
