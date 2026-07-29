@@ -103,7 +103,7 @@ legal = [
     "A Ademicon não comercializa cotas com data certa para contemplação ou contempladas.",
     "Valores sujeitos a alteração conforme grupo vigente. Contratação sujeita a análise e assinatura dos documentos oficiais.",
     "Administradora autorizada e regulada pelo Banco Central do Brasil.",
-    "Atendimento inicial via assistente virtual no WhatsApp; um consultor humano acompanha toda a contratação.",
+    "Atendimento realizado pelo Marcos via WhatsApp; não há assistente virtual ou agente automatizado nesta etapa.",
 ]
 for sentence in legal:
     require(sentence in plain, f"frase legal ausente: {sentence}")
