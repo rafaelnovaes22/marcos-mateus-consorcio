@@ -68,6 +68,8 @@ require('rel="canonical"' in HTML, "canonical ausente")
 require('https://www.marcosmateusconsorcio.com.br/' in HTML, "domínio canônico ausente")
 require((ROOT / "robots.txt").exists(), "robots.txt ausente")
 require((ROOT / "sitemap.xml").exists(), "sitemap.xml ausente")
+DOCKERFILE = (ROOT / "Dockerfile").read_text(encoding="utf-8") if (ROOT / "Dockerfile").exists() else ""
+require("COPY robots.txt" in DOCKERFILE and "COPY sitemap.xml" in DOCKERFILE, "Dockerfile precisa publicar robots.txt e sitemap.xml")
 require("Sitemap: https://www.marcosmateusconsorcio.com.br/sitemap.xml" in (ROOT / "robots.txt").read_text(encoding="utf-8"), "robots.txt sem sitemap canônico")
 try:
     ET.parse(ROOT / "sitemap.xml")
