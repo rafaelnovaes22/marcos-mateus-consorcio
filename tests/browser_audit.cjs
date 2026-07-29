@@ -41,7 +41,7 @@ const assert = require('node:assert/strict');
     assert.equal(layout.scrollWidth, layout.clientWidth, `${viewport.name}: overflow horizontal`);
     assert.equal(layout.h1, 1, `${viewport.name}: precisa de um H1`);
     assert.equal(layout.cards, 8, `${viewport.name}: precisa de 8 cartas`);
-    assert.equal(layout.waLinks, 15, `${viewport.name}: CTAs WhatsApp`);
+    assert.equal(layout.waLinks, 16, `${viewport.name}: CTAs WhatsApp`);
     assert.deepEqual(layout.smallTargets, [], `${viewport.name}: tap targets pequenos: ${layout.smallTargets.join(', ')}`);
     assert.deepEqual(errors, [], `${viewport.name}: erros no console: ${errors.join(', ')}`);
 

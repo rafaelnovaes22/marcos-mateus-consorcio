@@ -56,38 +56,8 @@ function setupCounters() {
   const counters = [...document.querySelectorAll(".counter")];
   if (!counters.length) return;
 
-  const setFinal = (element) => {
+  counters.forEach((element) => {
     element.textContent = Number(element.dataset.target).toLocaleString("pt-BR");
-  };
-
-  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-    counters.forEach(setFinal);
-    return;
-  }
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const element = entry.target;
-      const target = Number(element.dataset.target);
-      const duration = 900;
-      const start = performance.now();
-
-      const tick = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        element.textContent = Math.round(target * eased).toLocaleString("pt-BR");
-        if (progress < 1) requestAnimationFrame(tick);
-      };
-
-      requestAnimationFrame(tick);
-      observer.unobserve(element);
-    });
-  }, { threshold: 0.45 });
-
-  counters.forEach((counter) => {
-    counter.textContent = "0";
-    observer.observe(counter);
   });
 }
 
@@ -220,8 +190,36 @@ function setupFaq() {
   });
 }
 
+function setupMobileStickyCta() {
+  const cta = document.querySelector(".mobile-sticky-cta");
+  const finalCta = document.querySelector("#contato");
+  const query = window.matchMedia("(max-width: 980px)");
+  if (!cta || !finalCta) return;
+
+  let frame = 0;
+  const update = () => {
+    frame = 0;
+    const finalRect = finalCta.getBoundingClientRect();
+    const nearFinalCta = finalRect.top < window.innerHeight * 0.72;
+    const afterHeroStart = window.scrollY > 420;
+    const menuOpen = document.body.classList.contains("menu-open");
+    cta.classList.toggle("is-visible", query.matches && afterHeroStart && !nearFinalCta && !menuOpen);
+  };
+
+  const requestUpdate = () => {
+    if (frame) return;
+    frame = requestAnimationFrame(update);
+  };
+
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", requestUpdate, { passive: true });
+  query.addEventListener?.("change", update);
+  update();
+}
+
 setupMenu();
 setupReveal();
 setupCounters();
 setupCarousel();
 setupFaq();
+setupMobileStickyCta();
