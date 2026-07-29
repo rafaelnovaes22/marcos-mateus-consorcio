@@ -3,7 +3,9 @@
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs, unquote
+import json
 import re
+import xml.etree.ElementTree as ET
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -63,6 +65,24 @@ require("Consórcio Ademicon em São Paulo" in parser.title, "title SEO ausente"
 require(any(m.get("name") == "description" and m.get("content") for m in parser.meta), "meta description ausente")
 require(any(m.get("property") == "og:title" for m in parser.meta), "Open Graph ausente")
 require('rel="canonical"' in HTML, "canonical ausente")
+require('https://www.marcosmateusconsorcio.com.br/' in HTML, "domínio canônico ausente")
+require((ROOT / "robots.txt").exists(), "robots.txt ausente")
+require((ROOT / "sitemap.xml").exists(), "sitemap.xml ausente")
+require("Sitemap: https://www.marcosmateusconsorcio.com.br/sitemap.xml" in (ROOT / "robots.txt").read_text(encoding="utf-8"), "robots.txt sem sitemap canônico")
+try:
+    ET.parse(ROOT / "sitemap.xml")
+except ET.ParseError as exc:
+    errors.append(f"sitemap.xml inválido: {exc}")
+
+json_ld_blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', HTML, re.S)
+require(len(json_ld_blocks) >= 2, "JSON-LD de serviço e FAQ ausentes")
+for block in json_ld_blocks:
+    try:
+        json.loads(block)
+    except json.JSONDecodeError as exc:
+        errors.append(f"JSON-LD inválido: {exc}")
+require('"@type": "FinancialService"' in HTML, "schema FinancialService ausente")
+require('"@type": "FAQPage"' in HTML, "schema FAQPage ausente")
 
 # Ordem e estrutura
 required_ids = ["inicio", "prova", "cartas", "como-funciona", "investimento", "sobre", "depoimentos", "faq", "contato"]
@@ -96,6 +116,9 @@ for fact in ("35 anos", "+675 mil", "R$ 145 bi", "300 lojas"):
 require("sem juros de financiamento" in plain.lower(), "mensagem sem juros de financiamento ausente")
 require("até 30%" in plain, "ágio de até 30% ausente")
 require("café" in plain.lower(), "rapport de café ausente na bio")
+for term in ("consórcio em são paulo", "consultor autorizado ademicon", "consórcio de imóveis", "veículos", "planejamento patrimonial", "whatsapp"):
+    require(term in plain.lower(), f"termo SEO/GEO ausente: {term}")
+require("o atendimento pelo whatsapp é feito diretamente pelo marcos" in plain.lower(), "FAQ precisa esclarecer atendimento humano no WhatsApp")
 
 # Bloco legal integral
 legal = [
@@ -127,7 +150,7 @@ for href in wa_links:
 
 # Assets e zero dependências externas de runtime
 external_runtime = re.findall(r'(?:src|href)="(https?://[^"]+)"', HTML)
-external_runtime = [u for u in external_runtime if not u.startswith("https://wa.me/") and not u.startswith("https://marcos-mateus-consorcio-production.up.railway.app")]
+external_runtime = [u for u in external_runtime if not u.startswith("https://wa.me/") and not u.startswith("https://www.marcosmateusconsorcio.com.br") and not u.startswith("https://marcos-mateus-consorcio-production.up.railway.app")]
 require(not external_runtime, f"dependências externas encontradas: {external_runtime}")
 require((ROOT / "assets" / "marcos-mateus.jpg").exists(), "foto original do Marcos ausente")
 require("filter:" not in CSS or "filter:none" in CSS, "foto não deve receber filtro")

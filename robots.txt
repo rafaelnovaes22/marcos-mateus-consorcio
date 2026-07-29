@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.marcosmateusconsorcio.com.br/sitemap.xml
