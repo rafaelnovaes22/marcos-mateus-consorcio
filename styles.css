@@ -247,8 +247,8 @@ button { font: inherit; }
 .hero-note {
   position: relative;
   z-index: 3;
-  width: min(100%, 430px);
-  margin: 18px 0 0 auto;
+  width: 100%;
+  margin: 18px 0 0;
   padding: 20px 22px 22px;
   border-top: 4px solid var(--red);
   background: var(--white);
