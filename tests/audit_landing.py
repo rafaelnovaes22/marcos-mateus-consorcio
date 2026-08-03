@@ -61,7 +61,7 @@ def require(condition, message):
 
 # Documento e SEO
 require(parser.html_attrs.get("lang") == "pt-BR", "html precisa declarar lang=pt-BR")
-require("Consórcio Ademicon em São Paulo" in parser.title, "title SEO ausente")
+require("Consórcio Ademicon no Brasil" in parser.title, "title SEO ausente")
 require(any(m.get("name") == "description" and m.get("content") for m in parser.meta), "meta description ausente")
 require(any(m.get("property") == "og:title" for m in parser.meta), "Open Graph ausente")
 require('rel="canonical"' in HTML, "canonical ausente")
@@ -118,7 +118,7 @@ for fact in ("35 anos", "+675 mil", "R$ 145 bi", "300 lojas"):
 require("sem juros de financiamento" in plain.lower(), "mensagem sem juros de financiamento ausente")
 require("até 30%" in plain, "ágio de até 30% ausente")
 require("café" in plain.lower(), "rapport de café ausente na bio")
-for term in ("consórcio em são paulo", "consultor autorizado ademicon", "consórcio de imóveis", "veículos", "planejamento patrimonial", "whatsapp"):
+for term in ("todo o brasil", "consultor autorizado ademicon", "consórcio de imóveis", "veículos", "planejamento patrimonial", "whatsapp"):
     require(term in plain.lower(), f"termo SEO/GEO ausente: {term}")
 require("o atendimento pelo whatsapp é feito diretamente pelo marcos" in plain.lower(), "FAQ precisa esclarecer atendimento humano no WhatsApp")
 
