@@ -61,7 +61,7 @@ def require(condition, message):
 
 # Documento e SEO
 require(parser.html_attrs.get("lang") == "pt-BR", "html precisa declarar lang=pt-BR")
-require("Consórcio Ademicon no Brasil" in parser.title, "title SEO ausente")
+require("Consórcio Ademicon para todo o Brasil" in parser.title, "title SEO ausente")
 require(any(m.get("name") == "description" and m.get("content") for m in parser.meta), "meta description ausente")
 require(any(m.get("property") == "og:title" for m in parser.meta), "Open Graph ausente")
 require('rel="canonical"' in HTML, "canonical ausente")
